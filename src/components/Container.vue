@@ -234,12 +234,13 @@ export default {
       })
     },
     handleGenerateCode () {
-      this.codeVisible = true
+      /*this.codeVisible = true*/
       this.htmlTemplate = generateCode(JSON.stringify(this.widgetForm))
-      this.$nextTick(() => {
+        console.log(this.htmlTemplate)
+      /*this.$nextTick(() => {
         const editor = ace.edit('codeeditor')
         editor.session.setMode("ace/mode/html")
-      })
+      })*/
     }
   },
   watch: {
