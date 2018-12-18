@@ -3,7 +3,7 @@
     <el-aside style="wdith: 250px;">
 
       <div class="components-list">
-        <div class="widget-cate">基础字段</div>
+        <div class="widget-cate">组件</div>
         <draggable element="ul" :list="basicComponents" 
           :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
           @end="handleMoveEnd"
@@ -19,7 +19,7 @@
           </li>
         </draggable>
 
-        <div class="widget-cate">高级字段</div>
+        <!--<div class="widget-cate">高级字段</div>-->
         <draggable element="ul" :list="advanceComponents" 
           :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
           @end="handleMoveEnd"
@@ -56,9 +56,9 @@
     <el-container class="center-container" direction="vertical">
       <el-header class="btn-bar" style="height: 45px;">
         <!-- <el-button type="text" size="medium" @click="handleGoGithub">GitHub</el-button> -->
-        <el-button type="text" size="medium" icon="el-icon-view" @click="handlePreview">预览</el-button>
+        <!--<el-button type="text" size="medium" icon="el-icon-view" @click="handlePreview">预览</el-button>-->
         <el-button type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">生成JSON</el-button>
-        <el-button type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">生成代码</el-button>
+        <el-button type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">生成HTML</el-button>
       </el-header>
       <el-main :class="{'widget-empty': widgetForm.list.length == 0}">
         
@@ -196,6 +196,14 @@ export default {
     loadJs('lib/ace/src/ace.js')
   },
   methods: {
+    handleGenerateJson () {
+        this.jsonTemplate = this.widgetForm
+        console.log(this.jsonTemplate)
+    },
+    handleGenerateCode () {
+        this.htmlTemplate = generateCode(JSON.stringify(this.widgetForm))
+        console.log(this.htmlTemplate)
+    },
     handleGoGithub () {
       window.location.href = 'https://github.com/GavinZhuLei/vue-form-making'
     },
@@ -222,26 +230,25 @@ export default {
         this.$refs.widgetPreview.end()
       })
     },
-    handleGenerateJson () {
-      this.jsonVisible = true
+    /*handleGenerateJson () {
+//      this.jsonVisible = true
       this.jsonTemplate = this.widgetForm
-      this.$nextTick(() => {
+      /!*this.$nextTick(() => {
 
         const editor = ace.edit('jsoneditor')
         editor.session.setMode("ace/mode/json")
 
         const btnCopy = new Clipboard('#copybtn')
-      })
+      })*!/
     },
     handleGenerateCode () {
-      /*this.codeVisible = true*/
+//      this.codeVisible = true
       this.htmlTemplate = generateCode(JSON.stringify(this.widgetForm))
-        console.log(this.htmlTemplate)
-      /*this.$nextTick(() => {
+      /!*this.$nextTick(() => {
         const editor = ace.edit('codeeditor')
         editor.session.setMode("ace/mode/html")
-      })*/
-    }
+      })*!/
+    }*/
   },
   watch: {
     widgetForm: {

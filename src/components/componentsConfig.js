@@ -24,7 +24,7 @@ export const basicComponents = [
       placeholder: ''
     }
   },
-  {
+  /*{
     type: 'number',
     name: '计数器',
     icon: 'sort-numeric-up',
@@ -38,7 +38,7 @@ export const basicComponents = [
       disabled: false,
       controlsPosition: ''
     }
-  },
+  },*/
   {
     type: 'radio',
     name: '单选框组',
@@ -72,7 +72,7 @@ export const basicComponents = [
       remoteFunc: ''
     }
   },
-  {
+  /*{
     type: 'checkbox',
     name: '多选框组',
     icon: 'regular/check-square',
@@ -101,7 +101,7 @@ export const basicComponents = [
       },
       remoteFunc: ''
     }
-  },
+  },*/
   {
     type: 'time',
     name: '时间选择器',
@@ -142,7 +142,7 @@ export const basicComponents = [
       width: '',
     }
   },
-  {
+  /*{
     type: 'rate',
     name: '评分',
     icon: 'regular/star',
@@ -164,7 +164,7 @@ export const basicComponents = [
       showAlpha: false,
       required: false
     }
-  },
+  },*/
   {
     type: 'select',
     name: '下拉选择框',
@@ -197,7 +197,7 @@ export const basicComponents = [
       remoteFunc: ''
     }
   },
-  {
+  /*{
     type: 'switch',
     name: '开关',
     icon: 'toggle-off',
@@ -222,18 +222,18 @@ export const basicComponents = [
       range: false,
       width: ''
     }
-  }
+  }*/
 ]
 
 export const advanceComponents = [
-  {
+  /*{
     type: 'blank',
     name: '自定义',
     icon: 'chalkboard',
     options: {
       defaultType: 'String'
     }
-  },
+  },*/
   {
     type: 'imgupload',
     name: '图片',
