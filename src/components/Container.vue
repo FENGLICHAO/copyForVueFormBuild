@@ -3,7 +3,22 @@
     <el-aside style="wdith: 250px;">
 
       <div class="components-list">
-        <div class="widget-cate">组件</div>
+        <div class="widget-cate">栅格布局</div>
+        <draggable element="ul" :list="layoutComponents"
+                   :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                   @end="handleMoveEnd"
+                   @start="handleMoveStart"
+                   :move="handleMove"
+        >
+
+          <li class="form-edit-widget-label data-grid" v-for="(item, index) in layoutComponents" :key="index">
+            <a>
+              <icon class="icon" :name="item.icon"></icon>
+              <span>{{item.name}}</span>
+            </a>
+          </li>
+        </draggable>
+        <div class="widget-cate">表单元素</div>
         <draggable element="ul" :list="basicComponents" 
           :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
           @end="handleMoveEnd"
@@ -18,7 +33,6 @@
             </a>
           </li>
         </draggable>
-
         <!--<div class="widget-cate">高级字段</div>-->
         <draggable element="ul" :list="advanceComponents" 
           :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
@@ -34,27 +48,12 @@
             </a>
           </li>
         </draggable>
-        
-        <div class="widget-cate">布局字段</div>
-        <draggable element="ul" :list="layoutComponents" 
-          :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-          @end="handleMoveEnd"
-          @start="handleMoveStart"
-          :move="handleMove"
-        >
-          
-          <li class="form-edit-widget-label data-grid" v-for="(item, index) in layoutComponents" :key="index">
-            <a>
-              <icon class="icon" :name="item.icon"></icon>
-              <span>{{item.name}}</span>
-            </a>
-          </li>
-        </draggable>
       </div>
       
     </el-aside>
     <el-container class="center-container" direction="vertical">
       <el-header class="btn-bar" style="height: 45px;">
+        <span class="workArea">工作区:</span>
         <!-- <el-button type="text" size="medium" @click="handleGoGithub">GitHub</el-button> -->
         <!--<el-button type="text" size="medium" icon="el-icon-view" @click="handlePreview">预览</el-button>-->
         <el-button type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">生成JSON</el-button>
@@ -269,5 +268,15 @@ export default {
   background: url('../assets/form_empty.png') no-repeat;
   background-position: 50%;
 }
+.btn-bar{
+  display:flex;
+  align-items: center;
+  button{
 
+  }
+  .workArea{
+    font-size:14px;
+    margin-right:20px;
+  }
+}
 </style>

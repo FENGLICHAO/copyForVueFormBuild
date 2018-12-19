@@ -13,7 +13,7 @@
         高度：<el-input style="width: 90px;" type="number" v-model.number="data.options.size.height"></el-input>
       </el-form-item>
       
-      <el-form-item label="占位内容" v-if="Object.keys(data.options).indexOf('placeholder')>=0 && (data.type!='time' || data.type!='date')">
+      <el-form-item v-show="false" label="占位内容" v-if="Object.keys(data.options).indexOf('placeholder')>=0 && (data.type!='time' || data.type!='date')">
         <el-input v-model="data.options.placeholder"></el-input>
       </el-form-item>
       <el-form-item label="布局方式" v-if="Object.keys(data.options).indexOf('inline')>=0">
@@ -125,7 +125,7 @@
         
       </el-form-item>
 
-      <el-form-item label="默认值" v-if="Object.keys(data.options).indexOf('defaultValue')>=0 && (data.type == 'textarea' || data.type == 'input' || data.type=='rate' || data.type=='color' || data.type=='switch')">
+      <el-form-item label="默认值" v-if="Object.keys(data.options).indexOf('defaultValue')>=0 && (/*data.type == 'textarea' || data.type == 'input' ||*/ data.type=='rate' || data.type=='color' || data.type=='switch')">
         <el-input v-if="data.type=='textarea'" type="textarea" :rows="5" v-model="data.options.defaultValue"></el-input>
         <el-input v-if="data.type=='input'" v-model="data.options.defaultValue"></el-input>
         <el-rate v-if="data.type == 'rate'" style="display:inline-block;vertical-align: middle;" :max="data.options.max" :allow-half="data.options.allowHalf" v-model="data.options.defaultValue"></el-rate>
@@ -163,13 +163,13 @@
           >
           </el-switch>
         </el-form-item>
-        <el-form-item label="占位内容" v-if="(!data.options.isRange && data.type == 'time') || (data.type != 'time' && data.options.type != 'datetimerange' && data.options.type != 'daterange')">
+        <el-form-item v-show="false" label="占位内容" v-if="(!data.options.isRange && data.type == 'time') || (data.type != 'time' && data.options.type != 'datetimerange' && data.options.type != 'daterange')">
           <el-input v-model="data.options.placeholder"></el-input>
         </el-form-item>
-        <el-form-item label="开始时间占位内容" v-if="(data.options.isRange) || data.options.type=='datetimerange' || data.options.type=='daterange'">
+        <el-form-item v-show="false" label="开始时间占位内容" v-if="(data.options.isRange) || data.options.type=='datetimerange' || data.options.type=='daterange'">
           <el-input v-model="data.options.startPlaceholder"></el-input>
         </el-form-item>
-        <el-form-item label="结束时间占位内容" v-if="data.options.isRange || data.options.type=='datetimerange' || data.options.type=='daterange'">
+        <el-form-item v-show="false" label="结束时间占位内容" v-if="data.options.isRange || data.options.type=='datetimerange' || data.options.type=='daterange'">
           <el-input v-model="data.options.endPlaceholder"></el-input>
         </el-form-item>
         <el-form-item label="格式">
@@ -286,7 +286,7 @@
             <el-option value="hex" label="十六进制"></el-option>
           </el-select>
           
-          <div v-if="Object.keys(data.options).indexOf('pattern')>=0">
+          <div v-show="false" v-if="Object.keys(data.options).indexOf('pattern')>=0">
             <el-input size="mini" v-model.lazy="data.options.pattern"  style=" width: 240px;" placeholder="填写正则表达式"></el-input>
           </div>
         </el-form-item>
