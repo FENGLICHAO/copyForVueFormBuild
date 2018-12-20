@@ -8,8 +8,8 @@
           <el-radio-button label="top">顶部对齐</el-radio-button>
         </el-radio-group>
       </el-form-item>
-
-      <el-form-item label="表单字段宽度">
+      <!--表单字段宽度-->
+      <el-form-item label="标签宽度">
         <el-input-number v-model="data.labelWidth" :min="0" :max="200" :step="10"></el-input-number>
       </el-form-item>
     </el-form>

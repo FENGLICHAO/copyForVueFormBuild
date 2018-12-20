@@ -2,7 +2,6 @@
   <div>
     <el-form ref="generateForm" :model="models" :rules="rules" :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'">
       <template v-for="item in data.list">
-
         <template v-if="item.type == 'grid'">
           <el-row
             :key="item.key"
@@ -12,8 +11,6 @@
             :align="item.options.align"
           >
             <el-col v-for="(col, colIndex) in item.columns" :key="colIndex" :span="col.span">
-              
-
               <template v-for="citem in col.list" >
                 <el-form-item v-if="citem.type=='blank'" :label="citem.name" :prop="citem.model" :key="citem.key">
                   <slot :name="citem.model" :model="models"></slot>

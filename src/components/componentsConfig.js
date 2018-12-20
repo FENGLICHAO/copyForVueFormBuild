@@ -14,7 +14,7 @@ export const basicComponents = [
   },
   {
     type: 'textarea',
-    name: '多行文本',
+    name: '文字域',
     icon: 'regular/keyboard',
     options: {
       width: '100%',
@@ -233,7 +233,7 @@ export const advanceComponents = [
     options: {
       defaultType: 'String'
     }
-  },*/
+  },
   {
     type: 'imgupload',
     name: '图片',
@@ -252,7 +252,7 @@ export const advanceComponents = [
       length: 8,
       multiple: true
     }
-  }
+  }*/
 ]
 
 export const layoutComponents = [

@@ -1,7 +1,8 @@
 <template>
   <el-container>
-    <el-aside style="wdith: 250px;">
-
+    <!--菜单-->
+    <el-aside width="150px">
+      <el-header class="menu">表单</el-header>
       <div class="components-list">
         <div class="widget-cate">栅格布局</div>
         <draggable element="ul" :list="layoutComponents"
@@ -49,8 +50,8 @@
           </li>
         </draggable>
       </div>
-      
     </el-aside>
+    <!--桌面-->
     <el-container class="center-container" direction="vertical">
       <el-header class="btn-bar" style="height: 45px;">
         <span class="workArea">工作区:</span>
@@ -60,25 +61,23 @@
         <el-button type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">生成HTML</el-button>
       </el-header>
       <el-main :class="{'widget-empty': widgetForm.list.length == 0}">
-        
         <widget-form ref="widgetForm" :data="widgetForm" :select.sync="widgetFormSelect"></widget-form>
       </el-main>
     </el-container>
-    
+    <!--工具-->
     <el-aside class="widget-config-container">
       <el-container>
         <el-header height="45px">
-          <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">字段属性</div>
-          <div class="config-tab" :class="{active: configTab=='form'}" @click="handleConfigSelect('form')">表单属性</div>
+          <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')"><!--字段-->元素属性</div>
+          <div class="config-tab" :class="{active: configTab=='form'}" @click="handleConfigSelect('form')"><!--表单-->标签属性</div>
         </el-header>
         <el-main class="config-content">
           <widget-config v-show="configTab=='widget'" :data="widgetFormSelect"></widget-config>
           <form-config v-show="configTab=='form'" :data="widgetForm.config"></form-config>
         </el-main>
       </el-container>
-      
     </el-aside>
-
+    <!--对话框-->
     <cus-dialog
       :visible="previewVisible"
       @on-close="previewVisible = false"
@@ -95,7 +94,7 @@
         </template>
       </generate-form>
     </cus-dialog>
-
+    <!--对话框 json data-->
     <cus-dialog
       :visible="jsonVisible"
       @on-close="jsonVisible = false"
@@ -109,7 +108,7 @@
         <el-button id="copybtn" data-clipboard-target=".ace_text-input">双击复制</el-button>
       </template>
     </cus-dialog>
-
+    <!--对话框 html data-->
     <cus-dialog
       :visible="codeVisible"
       @on-close="codeVisible = false"
@@ -122,7 +121,27 @@
     </cus-dialog>
   </el-container>
 </template>
-
+<style scoped lang="scss">
+  .el-aside{
+    overflow: hidden;
+  }
+  .menu{
+    height: 45px !important;
+    line-height: 45px;
+    border-bottom: solid 2px #e4e7ed;
+  }
+  .components-list{
+    display:flex;
+    flex-flow: column;
+    ul{
+      display:flex;
+      flex-flow: column;
+      li{
+        width:100%;
+      }
+    }
+  }
+</style>
 <script>
 import Draggable from 'vuedraggable'
 import WidgetConfig from './WidgetConfig'
@@ -265,7 +284,7 @@ export default {
 @import '../styles/index.scss';
 
 .widget-empty{
-  background: url('../assets/form_empty.png') no-repeat;
+  /*background: url('../assets/form_empty.png') no-repeat;*/
   background-position: 50%;
 }
 .btn-bar{

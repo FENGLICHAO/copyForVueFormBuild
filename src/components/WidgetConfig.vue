@@ -1,10 +1,11 @@
 <template>
   <div v-if="show">
+    {{data}}
     <el-form label-position="top">
-      <el-form-item label="标题" v-if="data.type!='grid'">
+      <el-form-item label="标题设置" v-if="data.type!='grid'">
         <el-input v-model="data.name"></el-input>
       </el-form-item>
-      <el-form-item label="宽度" v-if="Object.keys(data.options).indexOf('width')>=0">
+      <el-form-item label="元素宽度" v-if="Object.keys(data.options).indexOf('width')>=0">
         <el-input v-model="data.options.width"></el-input>
       </el-form-item>
 
@@ -175,7 +176,7 @@
         <el-form-item label="格式">
           <el-input v-model="data.options.format"></el-input>
         </el-form-item>
-        <el-form-item label="默认值" v-if="data.type=='time' && Object.keys(data.options).indexOf('isRange')>=0">
+        <el-form-item v-show="false" label="默认值" v-if="data.type=='time' && Object.keys(data.options).indexOf('isRange')>=0">
           <el-time-picker 
             key="1"
             style="width: 100%;"
@@ -264,7 +265,7 @@
         <el-form-item label="数据绑定Key">
           <el-input v-model="data.model"></el-input>
         </el-form-item>
-        <el-form-item label="操作属性">
+        <el-form-item v-show="false" label="操作属性">
           <el-checkbox v-model="data.options.readonly" v-if="Object.keys(data.options).indexOf('readonly')>=0">完全只读</el-checkbox>
           <el-checkbox v-model="data.options.disabled" v-if="Object.keys(data.options).indexOf('disabled')>=0">禁用	</el-checkbox>
           <el-checkbox v-model="data.options.editable" v-if="Object.keys(data.options).indexOf('editable')>=0">文本框可输入</el-checkbox>
@@ -278,12 +279,12 @@
           <el-select v-if="Object.keys(data.options).indexOf('dataType')>=0" v-model="data.options.dataType" size="mini" >
             <el-option value="string" label="字符串"></el-option>
             <el-option value="number" label="数字"></el-option>
-            <el-option value="boolean" label="布尔值"></el-option>
+            <el-option v-show="false" value="boolean" label="布尔值"></el-option>
             <el-option value="integer" label="整数"></el-option>
             <el-option value="float" label="浮点数"></el-option>
-            <el-option value="url" label="URL地址"></el-option>
+            <el-option v-show="false" value="url" label="URL地址"></el-option>
             <el-option value="email" label="邮箱地址"></el-option>
-            <el-option value="hex" label="十六进制"></el-option>
+            <el-option v-show="false" value="hex" label="十六进制"></el-option>
           </el-select>
           
           <div v-show="false" v-if="Object.keys(data.options).indexOf('pattern')>=0">

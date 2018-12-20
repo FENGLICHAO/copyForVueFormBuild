@@ -1,7 +1,6 @@
 <template>
   <div class="widget-form-container">
     <el-form :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'">
-      
       <draggable class="widget-form-list" 
         
         v-model="data.list" 
@@ -9,6 +8,7 @@
         @end="handleMoveEnd"
         @add="handleWidgetAdd"
       >
+
 
         <template v-for="(element, index) in data.list">
           <template v-if="element.type == 'grid'">
